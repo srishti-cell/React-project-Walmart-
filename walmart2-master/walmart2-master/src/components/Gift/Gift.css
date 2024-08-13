@@ -1,0 +1,194 @@
+.gift-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  font-family: 'Arial', sans-serif;
+  background-image: url('walmart3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.loading-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loading-content {
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.loading-content p {
+  margin: 0;
+  color: black;
+}
+
+.spinner {
+  font-size: 40px;
+  margin-bottom: 10px;
+  animation: spin 1s linear infinite;
+}
+
+.smile {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.header {
+  margin-top: 0 px;
+  text-align: center;
+  margin-bottom: 35px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  max-width: 600px;
+}
+
+.filter-form {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Add gap between form groups */
+  margin-bottom: 0px;
+}
+
+.large-select {
+  width: 100%;
+  padding: 8px; /* Increased padding */
+  font-size: 16px; /* Increased font size */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px; /* Gap between rows */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Add gap between label and input */
+  flex: 1;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #333;
+}
+
+.color-options {
+  display: flex;
+  gap: 10px;
+}
+
+.color-circle {
+  width: 10px; /* Slightly larger size */
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.color-circle.selected {
+  border-color: #000;
+}
+
+.color-options {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.color-circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.color-circle.selected {
+  background-color: black; /* Black background to indicate selection */
+  border-color: white;
+}
+
+.custom-color-textarea {
+  margin-left: 10px;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: none;
+  width: 200px;
+  height: 15px; /* Small text area height */
+}
+
+.slider {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.slider-track {
+  display: flex;
+  background: #ddd;
+  height: 8px;
+  border-radius: 4px;
+}
+
+.slider-thumb {
+  justify-content: center;
+  align-items: center;
+  background: #007BFF;
+  border-radius: 50%;
+  height: 14px;
+  width: 14px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  margin-top: 5px;
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}

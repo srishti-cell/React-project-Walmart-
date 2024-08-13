@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    color: white;
+  }
+  
+  .header,
+  .sub-header {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0056b3;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header .logo img {
+    height: 60px;
+    width: 170px;
+  }
+  
+  .header .nav,
+  .header .account {
+    display: flex;
+  }
+  
+  .header .nav a,
+  .header .account a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+  
+  .header .search {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header .search input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 300px;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+  
+  .header .search button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffc107;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .sub-header p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .account a img {
+    width: 45px;
+    height: 42px;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  
+  .account a img:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  
+  .main-content {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .spin-game-container {
+    position: relative;
+    color: #202020;
+    border-radius: 55%; /* Increased slightly for smoother curve */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 425px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  #wheel {
+    width: 200%;
+    height: 250%;
+    border-radius: 50%;
+  }
+  
+  #spin-btn {
+    position: absolute;
+    width: 85px;
+    height: 90px;
+    border-radius: 100%;
+    background-color: #ffc107;
+    border: none;
+    color: white;
+  }

@@ -1,0 +1,105 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+p{
+    font-family: Arial, sans-serif;
+    color:black;
+}
+
+.header-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header-image {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.left-container {
+    width: 40%;
+}
+
+.right-container{
+    width: 60%;
+}
+
+.product-image {
+    width: 70%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.discount-line {
+    width:50%;
+    border: none;
+    border-top: 1px solid #000; /* black line */
+    margin: 10px 0; /* spacing */
+  }
+  
+
+.price, .discount, .final-price {
+    font-size: 1.2rem;
+    margin-bottom: 1px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0;
+    font-weight: bold;
+    
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+textarea,
+.react-datepicker-wrapper {
+  margin-top: 0; /* Remove any top margin */
+}
+
+textarea {
+    height: 100px;
+}
+
+input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+button {
+    background-color: #0071ce;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005bb5;
+}

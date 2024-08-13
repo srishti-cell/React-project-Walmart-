@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walmart Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            
+            color: white;
+        }
+
+        .header, .sub-header {
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0056B3;
+        }
+
+        .header .logo img {
+            height: 60px;
+            width: 170px;
+        }
+
+        .header .nav a, .header .account a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .header .search {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .search input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 300px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .header .search button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #FFC107;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .sub-header p {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .account a img {
+            width: 45px; /* Set the desired width */
+            height: 42px; /* Set the desired height */
+            vertical-align: middle; /* Align the images vertically with the text */
+            margin-right: 5px; /* Add space between the image and the text */
+        }
+        
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .spin-game-container {
+            position: relative;
+            color: #202020;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 425px; /* Increased width */
+            height: 500px; /* Increased height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #wheel {
+            width: 200%;
+            height: 250%;
+            border-radius: 50%;
+        }
+
+        #spin-btn {
+            position: absolute;
+            width: 85px; /* Increased button size */
+            height: 90px; /* Increased button size */
+            border-radius: 100%;
+            background-color: #FFC107;
+            border: none;
+            color: white;
+            font-size: 1.5em; /* Increased font size */
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        #final-value {
+            margin-top: 20px;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 2;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .popup-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 300px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .popup-content p {
+            color: black; /* Black color for popup text */
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-btn:hover, .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="https://www.logolynx.com/images/logolynx/b8/b865607bcb2b220f9f2eb738df079ac6.jpeg" alt="Walmart logo">
+        </div>
+        <div class="nav">
+            <a href="#">Departments</a>
+            <a href="#">Services</a>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search everything at Walmart online and in store">
+            <button>Search</button>
+        </div>
+        <div class="account">
+            <a href="#">
+                <img src="https://cdn2.iconfinder.com/data/icons/economy-and-finance-1/24/_favourite_shopping_bag-512.png" alt="Wishlist icon">
+                MY ITEMS
+            </a>
+            <a href="#">
+                <img src="https://static.vecteezy.com/system/resources/previews/019/787/045/original/shopping-cart-icon-shopping-basket-on-transparent-background-free-png.png" alt="Lock icon">
+            </a>
+        </div>
+    </div>
+    <div class="sub-header">
+        <p>Sacramento Supercenter | Sacramento, 95829</p>
+    </div>
+    <div class="main-content">
+        <div class="spin-game-container">
+            <canvas id="wheel"></canvas>
+            <button id="spin-btn">Spin</button>
+            <div id="final-value">
+                <p>Click On The Spin Button To Start</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup Message Modal -->
+    <div id="popup-message" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <p id="popup-text"></p>
+        </div>
+    </div>
+
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
+    <script>
+        const wheel = document.getElementById("wheel");
+        const spinBtn = document.getElementById("spin-btn");
+        const finalValue = document.getElementById("final-value");
+        const popupMessage = document.getElementById("popup-message");
+        const popupText = document.getElementById("popup-text");
+        const closeBtn = document.getElementsByClassName("close-btn")[0];
+
+        const rotationValues = [
+            { minDegree: 0, maxDegree: 30, value: "30% off" },
+            { minDegree: 31, maxDegree: 90, value: "10% off" },
+            { minDegree: 91, maxDegree: 150, value: "50% off" },
+            { minDegree: 151, maxDegree: 210, value: "20% off" },
+            { minDegree: 211, maxDegree: 270, value: "5% off" },
+            { minDegree: 271, maxDegree: 330, value: "40% off" },
+            { minDegree: 331, maxDegree: 360, value: "30% off" }
+        ];
+
+        const data = [16, 16, 16, 16, 16, 16];
+        const pieColors = ["#8b35bc", "#b163da", "#8b35bc", "#b163da", "#8b35bc", "#b163da"];
+
+        let myChart = new Chart(wheel, {
+            plugins: [ChartDataLabels],
+            type: "pie",
+            data: {
+                labels: ["30% off", "10% off", "50% off", "20% off", "5% off", "40% off"],
+                datasets: [{
+                    backgroundColor: pieColors,
+                    data: data
+                }]
+            },
+            options: {
+                responsive: true,
+                animation: { duration: 0 },
+                plugins: {
+                    tooltip: false,
+                    legend: { display: false },
+                    datalabels: {
+                        color: "#ffffff",
+                        formatter: (_, context) => context.chart.data.labels[context.dataIndex],
+                        font: { size: 18 }
+                    }
+                }
+            }
+        });
+
+        const valueGenerator = (angleValue) => {
+            for (let i of rotationValues) {
+                if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
+                    finalValue.innerHTML = <p>You won: ${i.value}</p>;
+                    showWinningMessage(i.value);
+                    spinBtn.disabled = false;
+                    break;
+                }
+            }
+        };
+
+        function showWinningMessage(discount) {
+            popupText.innerText = Hurray! You have won a ${discount} discount!;
+            popupMessage.style.display = "block";
+        }
+
+        closeBtn.onclick = function() {
+            popupMessage.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == popupMessage) {
+                popupMessage.style.display = "none";
+            }
+        }
+
+        let count = 0;
+        let resultValue = 101;
+
+        spinBtn.addEventListener("click", () => {
+            spinBtn.disabled = true;
+            finalValue.innerHTML = <p>Good Luck!</p>;
+
+            let randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
+            let rotationInterval = window.setInterval(() => {
+                myChart.options.rotation = myChart.options.rotation + resultValue;
+                myChart.update();
+                if (myChart.options.rotation >= 360) {
+                    count += 1;
+                    resultValue -= 5;
+                    myChart.options.rotation = 0;
+                } else if (count > 15 && myChart.options.rotation === randomDegree) {
+                    valueGenerator(randomDegree);
+                    clearInterval(rotationInterval);
+                    count = 0;
+                    resultValue = 101;
+                }
+            }, 10);
+        });
+
+        // Center the spin button on the wheel
+        window.addEventListener("load", () => {
+            const spinBtn = document.getElementById("spin-btn");
+            spinBtn.style.left = "40%";
+            spinBtn.style.top = "50%";
+            spinBtn.style.right = "500%";
+            spinBtn.style.transform = "translate(-30%, -50%)";
+        });
+    </script>
+</body>
+</html>
